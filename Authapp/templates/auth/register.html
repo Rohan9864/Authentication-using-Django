@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+     {% endif %}
+    <h1 style="text-align:center;">Register here</h1>
+    <form method="POST" action="{% url "register" %}" >
+        {% csrf_token %}
+        {% for i in form %}
+        <br> <br>
+    {{i.label_tag}}{{i}}
+    {% endfor %} <br> <br>
+    <button type="submit">Submit</button> <br><br>
+</form>
+<a href="{% url "login" %}"><button>Login</button></a>
+</body>
+</html>
